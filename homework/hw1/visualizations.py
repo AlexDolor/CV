@@ -3,17 +3,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
-# Пути (можно адаптировать)
-# VIDEO_IN = "data/shaky_video.mp4"
-# OUT_DIR = "output/vis"
-# os.makedirs(OUT_DIR, exist_ok=True)
-
 
 def save_example_frames_before_after(
     opts,
     frame_indices=(0, 100, 200),
     prefix=""
 ):
+    '''save frame_indices frames from initial and stabilized videos in pairs (initial, stabilized)'''
     if prefix == '':
         prefix = f'before_after_{opts.method}'
     
@@ -49,8 +45,8 @@ def save_example_frames_before_after(
 
 def plot_trajectory(opts, trajectory, smoothed_trajectory, prefix=""):
     """
-    Рисует и сохраняет графики траектории движения камеры:
-    - dx, dy, da (угол) + их сглаженные версии.
+    plots and saves as png trajectory of the camera:
+    - dx, dy, da (angle) + smothed versions.
     """
     if prefix == '':
         prefix = f'traj_{opts.method}'
@@ -112,9 +108,6 @@ def visualize_warp_example(opts, transforms, transforms_smooth, example_frame=15
         1. initial video, 
         2. video, warped with transforms
         3. video, warped with transforms_smooth
-    Показывает пример warping-а:
-    - исходная трансформация (по сырому движению);
-    - стабилизированная трансформация (по сглаженной траектории).
     """
     if prefix == '':
         prefix = f'warp_{opts.method}'
