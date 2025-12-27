@@ -1,0 +1,8 @@
+names:
+  0: Bird
+  1: Cat
+  2: Dog
+path: homework\hw2\dataset
+test: test/images
+train: train/images
+val: valid/images
